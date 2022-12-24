@@ -84,6 +84,8 @@ namespace UImGui
 
 		public CommandBuffer CommandBuffer => _renderCommandBuffer;
 
+        public Camera Camera => _camera;
+
 		#region Events
 		public event System.Action<UImGui> Layout;
 		public event System.Action<UImGui> OnInitialize;
