@@ -1,5 +1,6 @@
 ﻿using ImGuiNET;
 using UnityEngine;
+using Vector4 = System.Numerics.Vector4;
 
 namespace UImGui.Assets
 {
@@ -148,11 +149,11 @@ namespace UImGui.Assets
 		{
 			s.Alpha = Alpha;
 
-			s.WindowPadding = WindowPadding;
+			s.WindowPadding = WindowPadding.Convert();
 			s.WindowRounding = WindowRounding;
 			s.WindowBorderSize = WindowBorderSize;
-			s.WindowMinSize = WindowMinSize;
-			s.WindowTitleAlign = WindowTitleAlign;
+			s.WindowMinSize = WindowMinSize.Convert();
+			s.WindowTitleAlign = WindowTitleAlign.Convert();
 			s.WindowMenuButtonPosition = WindowMenuButtonPosition;
 
 			s.ChildRounding = ChildRounding;
@@ -161,16 +162,16 @@ namespace UImGui.Assets
 			s.PopupRounding = PopupRounding;
 			s.PopupBorderSize = PopupBorderSize;
 
-			s.FramePadding = FramePadding;
+			s.FramePadding = FramePadding.Convert();
 			s.FrameRounding = FrameRounding;
 			s.FrameBorderSize = FrameBorderSize;
 
-			s.ItemSpacing = ItemSpacing;
-			s.ItemInnerSpacing = ItemInnerSpacing;
+			s.ItemSpacing = ItemSpacing.Convert();
+			s.ItemInnerSpacing = ItemInnerSpacing.Convert();
 
-			s.CellPadding = CellPadding;
+			s.CellPadding = CellPadding.Convert();
 
-			s.TouchExtraPadding = TouchExtraPadding;
+			s.TouchExtraPadding = TouchExtraPadding.Convert();
 
 			s.IndentSpacing = IndentSpacing;
 
@@ -189,12 +190,12 @@ namespace UImGui.Assets
 
 			s.ColorButtonPosition = ColorButtonPosition;
 
-			s.ButtonTextAlign = ButtonTextAlign;
+			s.ButtonTextAlign = ButtonTextAlign.Convert();
 
-			s.SelectableTextAlign = SelectableTextAlign;
+			s.SelectableTextAlign = SelectableTextAlign.Convert();
 
-			s.DisplayWindowPadding = DisplayWindowPadding;
-			s.DisplaySafeAreaPadding = DisplaySafeAreaPadding;
+			s.DisplayWindowPadding = DisplayWindowPadding.Convert();
+			s.DisplaySafeAreaPadding = DisplaySafeAreaPadding.Convert();
 
 			s.MouseCursorScale = MouseCursorScale;
 
@@ -207,7 +208,8 @@ namespace UImGui.Assets
 
 			for (int colorIndex = 0; colorIndex < Colors.Length; ++colorIndex)
 			{
-				s.Colors[colorIndex] = Colors[colorIndex];
+                Vector4 col = s.Colors[colorIndex];
+                Colors[colorIndex] = new Color(col.X, col.Y, col.Z, col.W);
 			}
 		}
 
@@ -215,11 +217,11 @@ namespace UImGui.Assets
 		{
 			Alpha = s.Alpha;
 
-			WindowPadding = s.WindowPadding;
+			WindowPadding = s.WindowPadding.Convert();
 			WindowRounding = s.WindowRounding;
 			WindowBorderSize = s.WindowBorderSize;
-			WindowMinSize = s.WindowMinSize;
-			WindowTitleAlign = s.WindowTitleAlign;
+			WindowMinSize = s.WindowMinSize.Convert();
+			WindowTitleAlign = s.WindowTitleAlign.Convert();
 			WindowMenuButtonPosition = s.WindowMenuButtonPosition;
 
 			ChildRounding = s.ChildRounding;
@@ -228,16 +230,16 @@ namespace UImGui.Assets
 			PopupRounding = s.PopupRounding;
 			PopupBorderSize = s.PopupBorderSize;
 
-			FramePadding = s.FramePadding;
+			FramePadding = s.FramePadding.Convert();
 			FrameRounding = s.FrameRounding;
 			FrameBorderSize = s.FrameBorderSize;
 
-			ItemSpacing = s.ItemSpacing;
-			ItemInnerSpacing = s.ItemInnerSpacing;
+			ItemSpacing = s.ItemSpacing.Convert();
+			ItemInnerSpacing = s.ItemInnerSpacing.Convert();
 
-			CellPadding = s.CellPadding;
+			CellPadding = s.CellPadding.Convert();
 
-			TouchExtraPadding = s.TouchExtraPadding;
+			TouchExtraPadding = s.TouchExtraPadding.Convert();
 
 			IndentSpacing = s.IndentSpacing;
 
@@ -256,12 +258,12 @@ namespace UImGui.Assets
 
 			ColorButtonPosition = s.ColorButtonPosition;
 
-			ButtonTextAlign = s.ButtonTextAlign;
+			ButtonTextAlign = s.ButtonTextAlign.Convert();
 
-			SelectableTextAlign = s.SelectableTextAlign;
+			SelectableTextAlign = s.SelectableTextAlign.Convert();
 
-			DisplayWindowPadding = s.DisplayWindowPadding;
-			DisplaySafeAreaPadding = s.DisplaySafeAreaPadding;
+			DisplayWindowPadding = s.DisplayWindowPadding.Convert();
+			DisplaySafeAreaPadding = s.DisplaySafeAreaPadding.Convert();
 
 			MouseCursorScale = s.MouseCursorScale;
 
@@ -273,9 +275,10 @@ namespace UImGui.Assets
 			CircleTessellationMaxError = s.CircleTessellationMaxError;
 
 			for (int colorIndex = 0; colorIndex < Colors.Length; ++colorIndex)
-			{
-				Colors[colorIndex] = s.Colors[colorIndex];
-			}
+            {
+                Vector4 col = s.Colors[colorIndex];
+                Colors[colorIndex] = new Color(col.X, col.Y, col.Z, col.W);
+            }
 		}
 
 		public void SetDefault()

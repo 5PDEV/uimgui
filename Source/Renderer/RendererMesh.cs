@@ -85,7 +85,7 @@ namespace UImGui.Renderer
 
 		public void RenderDrawLists(CommandBuffer commandBuffer, ImDrawDataPtr drawData)
 		{
-			Vector2 fbOSize = drawData.DisplaySize * drawData.FramebufferScale;
+			Vector2 fbOSize = drawData.DisplaySize.Convert() * drawData.FramebufferScale.Convert();
 
 			// Avoid rendering when minimized.
 			if (fbOSize.x <= 0f || fbOSize.y <= 0f || drawData.TotalVtxCount == 0) return;
@@ -174,10 +174,10 @@ namespace UImGui.Renderer
 		private void CreateDrawCommands(CommandBuffer commandBuffer, ImDrawDataPtr drawData, Vector2 fbSize)
 		{
 			IntPtr prevTextureId = IntPtr.Zero;
-			Vector4 clipOffset = new Vector4(drawData.DisplayPos.x, drawData.DisplayPos.y,
-				drawData.DisplayPos.x, drawData.DisplayPos.y);
-			Vector4 clipScale = new Vector4(drawData.FramebufferScale.x, drawData.FramebufferScale.y,
-				drawData.FramebufferScale.x, drawData.FramebufferScale.y);
+			Vector4 clipOffset = new Vector4(drawData.DisplayPos.X, drawData.DisplayPos.Y,
+				drawData.DisplayPos.X, drawData.DisplayPos.Y);
+			Vector4 clipScale = new Vector4(drawData.FramebufferScale.X, drawData.FramebufferScale.Y,
+				drawData.FramebufferScale.X, drawData.FramebufferScale.Y);
 
 			commandBuffer.SetViewport(new Rect(0f, 0f, fbSize.x, fbSize.y));
 			commandBuffer.SetViewProjectionMatrices(
@@ -199,7 +199,7 @@ namespace UImGui.Renderer
 					else
 					{
 						// Project scissor rectangle into framebuffer space and skip if fully outside.
-						Vector4 clipSize = drawCmd.ClipRect - clipOffset;
+						Vector4 clipSize = drawCmd.ClipRect.Convert() - clipOffset;
 						Vector4 clip = Vector4.Scale(clipSize, clipScale);
 
 						if (clip.x >= fbSize.x || clip.y >= fbSize.y || clip.z < 0f || clip.w < 0f) continue;

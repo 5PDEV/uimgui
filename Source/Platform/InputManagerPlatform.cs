@@ -74,7 +74,7 @@ namespace UImGui.Platform
 				io.KeyMap[(int)ImGuiKey.Space] = (int)KeyCode.Space,
 				io.KeyMap[(int)ImGuiKey.Escape] = (int)KeyCode.Escape,
 				io.KeyMap[(int)ImGuiKey.Enter] = (int)KeyCode.Return,
-				io.KeyMap[(int)ImGuiKey.KeyPadEnter] = (int)KeyCode.KeypadEnter,
+				io.KeyMap[(int)ImGuiKey.KeypadEnter] = (int)KeyCode.KeypadEnter,
 			};
 		}
 
@@ -106,7 +106,7 @@ namespace UImGui.Platform
 
 		private static void UpdateMouse(ImGuiIOPtr io)
 		{
-			io.MousePos = Utils.ScreenToImGui(Input.mousePosition);
+			io.MousePos = Utils.ScreenToImGui(Input.mousePosition).Convert();
 
 			io.MouseWheel = Input.mouseScrollDelta.y;
 			io.MouseWheelH = Input.mouseScrollDelta.x;

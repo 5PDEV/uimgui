@@ -95,7 +95,7 @@ namespace UImGui
 			io.FontGlobalScale = FontGlobalScale;
 			io.FontAllowUserScaling = FontAllowUserScaling;
 
-			io.DisplayFramebufferScale = DisplayFramebufferScale;
+			io.DisplayFramebufferScale = DisplayFramebufferScale.Convert();
 			io.MouseDrawCursor = MouseDrawCursor;
 
 			io.ConfigDockingNoSplit = ConfigDockingNoSplit;
@@ -124,7 +124,7 @@ namespace UImGui
 			FontGlobalScale = io.FontGlobalScale;
 			FontAllowUserScaling = io.FontAllowUserScaling;
 
-			DisplayFramebufferScale = io.DisplayFramebufferScale;
+			DisplayFramebufferScale = io.DisplayFramebufferScale.Convert();
 			MouseDrawCursor = io.MouseDrawCursor;
 
 			ConfigDockingNoSplit = io.ConfigDockingNoSplit;

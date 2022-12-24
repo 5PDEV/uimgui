@@ -61,7 +61,7 @@ namespace UImGui.Platform
 		{
 			Assert.IsTrue(io.Fonts.IsBuilt(), "Font atlas not built! Generally built by the renderer. Missing call to renderer NewFrame() function?");
 
-			io.DisplaySize = displayRect.size; // TODO: dpi aware, scale, etc.
+			io.DisplaySize = displayRect.size.Convert(); // TODO: dpi aware, scale, etc.
 
 			io.DeltaTime = Time.unscaledDeltaTime;
 

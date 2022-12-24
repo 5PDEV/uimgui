@@ -79,8 +79,8 @@ namespace UImGui
 			im.OversampleH = OversampleH;
 			im.OversampleV = OversampleV;
 			im.PixelSnapH = PixelSnapH;
-			im.GlyphExtraSpacing = GlyphExtraSpacing;
-			im.GlyphOffset = GlyphOffset;
+			im.GlyphExtraSpacing = GlyphExtraSpacing.Convert();
+			im.GlyphOffset = GlyphOffset.Convert();
 			im.GlyphMinAdvanceX = GlyphMinAdvanceX;
 			im.GlyphMaxAdvanceX = GlyphMaxAdvanceX;
 			im.MergeMode = MergeMode;
@@ -101,8 +101,8 @@ namespace UImGui
 			OversampleH = im.OversampleH;
 			OversampleV = im.OversampleV;
 			PixelSnapH = im.PixelSnapH;
-			GlyphExtraSpacing = im.GlyphExtraSpacing;
-			GlyphOffset = im.GlyphOffset;
+			GlyphExtraSpacing = im.GlyphExtraSpacing.Convert();
+			GlyphOffset = im.GlyphOffset.Convert();
 			GlyphMinAdvanceX = im.GlyphMinAdvanceX;
 			GlyphMaxAdvanceX = im.GlyphMaxAdvanceX;
 			MergeMode = im.MergeMode;

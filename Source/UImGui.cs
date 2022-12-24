@@ -247,10 +247,7 @@ namespace UImGui
 			_context.TextureManager.PrepareFrame(io);
 			_platform.PrepareFrame(io, _camera.pixelRect);
 			ImGui.NewFrame();
-#if !UIMGUI_REMOVE_IMGUIZMO
-			ImGuizmoNET.ImGuizmo.BeginFrame();
-#endif
-			Constants.PrepareFrameMarker.End();
+            Constants.PrepareFrameMarker.End();
 
 			Constants.LayoutMarker.Begin(this);
 			try

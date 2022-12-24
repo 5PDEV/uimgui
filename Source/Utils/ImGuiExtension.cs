@@ -78,5 +78,12 @@ namespace UImGui
 				_managedAllocations.Add((IntPtr)nativeName);
 			}
 		}
-	}
+
+		public static UnityEngine.Vector2 Convert(this System.Numerics.Vector2 vec) => new(vec.X, vec.Y);
+		public static System.Numerics.Vector2 Convert(this UnityEngine.Vector2 vec) => new(vec.x, vec.y);
+		public static UnityEngine.Vector3 Convert(this System.Numerics.Vector3 vec) => new(vec.X, vec.Y, vec.Z);
+		public static System.Numerics.Vector3 Convert(this UnityEngine.Vector3 vec) => new(vec.x, vec.y, vec.z);
+		public static UnityEngine.Vector4 Convert(this System.Numerics.Vector4 vec) => new(vec.X, vec.Y, vec.Z, vec.W);
+		public static System.Numerics.Vector4 Convert(this UnityEngine.Vector4 vec) => new(vec.x, vec.y, vec.z, vec.w);
+    }
 }

@@ -71,10 +71,10 @@ namespace UImGui.Platform
 			// Set Unity mouse position if requested.
 			if (io.WantSetMousePos)
 			{
-				mouse.WarpCursorPosition(Utils.ImGuiToScreen(io.MousePos));
+				mouse.WarpCursorPosition(Utils.ImGuiToScreen(io.MousePos.Convert()));
 			}
 
-			io.MousePos = Utils.ScreenToImGui(mouse.position.ReadValue());
+			io.MousePos = Utils.ScreenToImGui(mouse.position.ReadValue()).Convert();
 
 			Vector2 mouseScroll = mouse.scroll.ReadValue() / 120f;
 			io.MouseWheel = mouseScroll.y;
@@ -157,7 +157,7 @@ namespace UImGui.Platform
 				io.KeyMap[(int)ImGuiKey.Space] = (int)Key.Space,
 				io.KeyMap[(int)ImGuiKey.Escape] = (int)Key.Escape,
 				io.KeyMap[(int)ImGuiKey.Enter] = (int)Key.Enter,
-				io.KeyMap[(int)ImGuiKey.KeyPadEnter] = (int)Key.NumpadEnter,
+				io.KeyMap[(int)ImGuiKey.KeypadEnter] = (int)Key.NumpadEnter,
 			};
 			_keyboard.onTextInput += _textInput.Add;
 		}
