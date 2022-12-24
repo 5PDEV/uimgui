@@ -1,5 +1,14 @@
 ﻿Shader "DearImGui/Mesh"
 {
+    Properties
+    {
+        // These are a hack to make the shader compile correctly on metal 
+        // by making it fetch a property rather than precompute the values
+        // as for some reason bitwise operations are broken
+         _Eight ("DONT CHANGE", int) = 256
+         _Sixteen ("DONT CHANGE", int) = 65536
+         _TwentyFour ("DONT CHANGE", int) = 16777216
+    }
     // shader for Universal render pipeline
     SubShader
     {

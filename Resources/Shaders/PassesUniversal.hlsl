@@ -10,18 +10,21 @@
 
 TEXTURE2D(_Texture);
 SAMPLER(sampler_Texture);
+int _Eight;
+int _Sixteen;
+int _TwentyFour;
 
-half4 unpack_color(uint c)
+half4 unpack_color(const uint c)
 {
     half4 color = half4(
-        (c      ) & 0xff,
-        (c >>  8) & 0xff,
-        (c >> 16) & 0xff,
-        (c >> 24) & 0xff
-    ) / 255;
-#ifndef UNITY_COLORSPACE_GAMMA
+        (c) & (0xff),
+        (c /_Eight) & (0xff),
+        (c / _Sixteen) & (0xff),
+        (c / _TwentyFour) & (0xff)
+        ) / 255;
+    #ifndef UNITY_COLORSPACE_GAMMA
     color.rgb = FastSRGBToLinear(color.rgb);
-#endif
+    #endif
     return color;
 }
 
